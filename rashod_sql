@@ -1,0 +1,17 @@
+ use PersonalRashod;
+ go
+
+ create table Categories (
+ id int primary key identity(1,1),
+ name nvarchar(100) not null unique
+ );
+ create table Rashod (
+ id int primary key identity (1,1),
+ Title nvarchar(200) not null,
+ Amount decimal(18,2) not null,
+ Date date not null,
+ CategoryId int not null,
+ Comment nvarchar(max) null,
+ foreign key (CategoryId) references Categories(Id) on delete cascade
+ );
+ insert into Categories (Name) values ('Продукты'), ('Транспорт'), ('Жилье'), ('Развлечения'), ('Здоровье');
